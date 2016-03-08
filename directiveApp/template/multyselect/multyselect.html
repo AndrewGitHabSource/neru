@@ -1,0 +1,10 @@
+<div class="wrapper-select">
+    <div class="button-select" ng-click="toggle($event)">{{selectElementsString}}</div>
+    <div class="open-select {{index}}">
+        <input type="text" class="filter" ng-model="nameByFilter">
+
+        <ul class="list-item">
+            <li ng-repeat="item in source | filter:nameByFilter" ng-click="select(item, $event)"><span class="icon-select"></span>{{item.name}}</li>
+        </ul>
+    </div>
+</div>

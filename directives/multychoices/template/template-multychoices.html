@@ -1,0 +1,16 @@
+<div class="wrapper-multychoices">
+	<input readonly ng-click="open()" ng-model="formedText" class="form-input-element" type="text" name="" placeholder="Выберите область или город">
+	<div ng-show="openly" class="open-window">
+		<p ng-if="step" class="top-title">Выберите область</p>
+		<div ng-if="!step" class="nav-multychoices">
+			<p ng-click="backFirstStep()" class="back-first">Изменить область</p>
+			<p class="right-nav">Искать по всей области</p>
+		</div>
+		<div class="data-first">
+			<ul>
+				<li ng-if="step" ng-click="choiceFirst(item)" ng-repeat="item in data">{{item.region.name}}</li>
+				<li ng-if="!step" ng-click="choice(item)" ng-repeat="item in subData">{{item.name}}</li>
+			</ul>
+		</div>
+	</div>
+</div>

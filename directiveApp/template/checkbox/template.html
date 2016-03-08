@@ -1,0 +1,5 @@
+<div class="wrapper checkbox-element">
+    <label for="{{identifer}}" class="checkbox-view" ng-class="{ enabled: enabled }"></label>
+    <input ng-model="enabled" id="{{identifer}}" type="checkbox" name="check" ng-disabled="{{executed}}" ng-readonly="{{readonly}}" ng-change="action()">
+    <label for="{{identifer}}">{{text}}</label>
+</div>

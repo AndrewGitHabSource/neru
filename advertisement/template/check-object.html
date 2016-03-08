@@ -1,0 +1,181 @@
+<div class="page-header">
+	<div class="container">
+		<h1>Добавление объявления</h1>
+	</div>
+</div>
+<div class="breadcrumb">
+	<div class="container">
+		<ul>
+			<li><a ui-sref="home">Главная</a></li>
+			<li>Добавить объявления</li>
+		</ul>
+	</div>
+</div>
+<div class="container">
+	<div class="steps">
+		<div class="step active-step">
+			<div class="circle">1</div>
+			<p>Адрес недвижимости</p>
+		</div>
+		<div class="step">
+			<div class="circle">2</div>
+			<p>Характеристики недвижимости</p>
+		</div>
+		<div class="step">
+			<div class="circle">3</div>
+			<p>Публикация объявления</p>
+		</div>
+	</div>
+
+	<div class="add-advert">
+		<form novalidate name="formStepFirst" ng-submit="ctrl.sendObject(formStepFirst)">
+			<div class="form-group">
+				<h2>Недвижимость</h2>
+				<label class="required">Категория</label>
+				<ui-select required ng-model="ctrl.realty.selectedCategory" name="selectedCategory" ng-change="ctrl.changeCategory(ctrl.realty.selectedCategory)" theme="bootstrap">
+					<ui-select-match placeholder="">{{ctrl.realty.selectedCategory.name}}</ui-select-match>
+					<ui-select-choices repeat="item in ctrl.realty.category | filter: $select.search">
+						<div ng-bind-html="item.name"></div>
+					</ui-select-choices>
+				</ui-select>
+				<div class="error-wrap" ng-show="formStepFirst.$submitted || formStepFirst.selectedCategory.$touched">
+					<div class="form-error" ng-show="formStepFirst.selectedCategory.$error.required">{{ctrl.messages.necessarily}}</div>
+				</div>
+
+				<label class="required">Вид недвижимости</label>
+				<ui-select required ng-model="ctrl.realty.selectTypeRealty" name="selectTypeRealty" theme="bootstrap">
+					<ui-select-match placeholder="">{{ctrl.realty.selectTypeRealty.name}}</ui-select-match>
+					<ui-select-choices repeat="item in ctrl.realty.typeRealty | filter: $select.search">
+						<div ng-bind-html="item.name"></div>
+					</ui-select-choices>
+				</ui-select>
+				<div class="error-wrap" ng-show="formStepFirst.$submitted || formStepFirst.selectTypeRealty.$touched">
+					<div class="form-error" ng-show="formStepFirst.selectTypeRealty.$error.required">{{ctrl.messages.necessarily}}</div>
+				</div>
+			</div>
+
+			<div class="separator"></div>
+
+			<div class="form-group">
+				<h2>Адрес</h2>
+
+				<label class="required">Область</label>
+				<ui-select required ng-model="ctrl.realty.selectedRegions" name="selectedRegions" ng-change="ctrl.changeRegion(ctrl.realty.selectedRegions)" theme="bootstrap">
+					<ui-select-match placeholder="">{{ctrl.realty.selectedRegions.name}}</ui-select-match>
+					<ui-select-choices repeat="item in ctrl.realty.region | filter: $select.search">
+						<div ng-bind-html="item.name"></div>
+					</ui-select-choices>
+				</ui-select>
+				<div class="error-wrap" ng-show="formStepFirst.$submitted || formStepFirst.selectedRegions.$touched">
+					<div class="form-error" ng-show="formStepFirst.selectedRegions.$error.required">{{ctrl.messages.necessarily}}</div>
+				</div>
+
+				<label ng-class="{'required': !ctrl.realty.categoryParcels}">Город</label>
+				<ui-select required ng-required="!ctrl.realty.categoryParcels" name="categoryParcels" ng-model="ctrl.realty.selectedCity"
+					ng-change="ctrl.changeCity(ctrl.realty.selectedCity)" theme="bootstrap">
+					<ui-select-match placeholder="">{{ctrl.realty.selectedCity.name}}</ui-select-match>
+					<ui-select-choices repeat="item in ctrl.realty.city | filter: $select.search">
+						<div ng-bind-html="item.name"></div>
+					</ui-select-choices>
+				</ui-select>
+				<div class="error-wrap" ng-show="formStepFirst.$submitted || formStepFirst.categoryParcels.$touched">
+					<div class="form-error" ng-show="formStepFirst.categoryParcels.$error.required">{{ctrl.messages.necessarily}}</div>
+				</div>
+
+				<label>Район</label>
+				<ui-select ng-model="ctrl.realty.selectedDistricts" theme="bootstrap">
+					<ui-select-match placeholder="Район">{{ctrl.realty.selectedDistricts.name}}</ui-select-match>
+					<ui-select-choices repeat="item in ctrl.realty.districts | filter: $select.search">
+						<div ng-bind-html="item.name"></div>
+					</ui-select-choices>
+				</ui-select>
+
+				<div class="wrapper-dropdown">
+					<p><label ng-class="{'required': !ctrl.realty.categoryParcels}">Улица</label></p>
+					<ui-select ng-required="!ctrl.realty.categoryParcels" theme="bootstrap" reset-search-input="false"  name="streetSelected" ng-model="ctrl.realty.streetSelected"
+						ng-change="ctrl.changeStreet(ctrl.realty.streetSelected)" theme="bootstrap">
+						<ui-select-match placeholder="Уточните название улицы">{{ctrl.realty.streetSelected.name}}</ui-select-match>
+						<ui-select-choices repeat="item in ctrl.realty.street | filter: $select.search">
+							<div ng-bind-html="item.name"></div>
+						</ui-select-choices>
+					</ui-select>
+
+					<div class="error-wrap" ng-show="formStepFirst.$submitted || formStepFirst.streetSelected.$touched">
+						<div class="form-error" ng-show="formStepFirst.streetSelected.$error.required">{{ctrl.messages.necessarily}}</div>
+					</div>
+				</div>
+
+
+
+				<div class="wrapper-elements">
+					<p><label class="required" ng-show="!ctrl.realty.categoryParcels">Номер дома</label></p>
+					<input ng-pattern="ctrl.messages.notDegitPattern" placeholder="Начните печатать номер дома" ng-disabled="!ctrl.realty.streetSelected.name"
+						ng-change="ctrl.changeInputHouse(formStepFirst.houseNumberSelected)" ng-required="!ctrl.realty.categoryParcels" ng-show="!ctrl.realty.categoryParcels" name="houseNumberSelected" type="text"
+						typeahead-on-select="ctrl.changeNumberHouse(ctrl.realty.houseNumberSelected)" typeahead-template-url="content/template/typeahead-match.html"
+						typeahead-popup-template-url="content/template/typeahead-popup.html" ng-model="ctrl.realty.houseNumberSelected"
+						uib-typeahead="item as item.number for item in ctrl.realty.houseNumber | filter:{number:$viewValue}" class="form-control" autocomplete="off"
+						ng-class="{errorInput: (formStepFirst.houseNumberSelected.$error.required || formStepFirst.houseNumberSelected.$error.pattern) && (formStepFirst.$submitted || formStepFirst.houseNumberSelected.$touched)}">
+
+					<div class="error-wrap" ng-show="(formStepFirst.$submitted || formStepFirst.houseNumberSelected.$touched) && !ctrl.categoryParcels">
+						<div class="form-error" ng-show="formStepFirst.houseNumberSelected.$error.required">{{ctrl.messages.necessarily}}</div>
+						<div class="form-error" ng-show="formStepFirst.houseNumberSelected.$error.pattern">{{ctrl.messages.notDegit}}</div>
+					</div>
+				</div>
+
+				<div class="wrapper-elements">
+					<p><label class="required" ng-show="ctrl.realty.categoryFlat">Номер квартиры</label></p>
+					<input ng-pattern="ctrl.messages.notDegitPattern" placeholder="Начните печатать номер квартиры" ng-disabled="!ctrl.realty.houseNumberSelected.number" ng-change="ctrl.changeInputFlat(formStepFirst.categoryFlat)"
+						name="categoryFlat" ng-required="ctrl.realty.categoryFlat" ng-show="ctrl.realty.categoryFlat" type="text" typeahead-template-url="content/template/typeahead-match.html"
+						typeahead-popup-template-url="content/template/typeahead-popup.html" ng-model="ctrl.realty.numberFlatSelected"
+						uib-typeahead="item as item.number for item in ctrl.realty.numberFlat | filter:{number:$viewValue}"
+						class="form-control" autocomplete="off" ng-class="{errorInput: (formStepFirst.categoryFlat.$error.required || formStepFirst.categoryFlat.$error.pattern) && (formStepFirst.$submitted
+						|| formStepFirst.categoryFlat.$touched)}">
+
+					<div class="error-wrap" ng-show="(formStepFirst.$submitted || formStepFirst.categoryFlat.$touched) && ctrl.realty.categoryFlat">
+						<div class="form-error" ng-show="formStepFirst.categoryFlat.$error.required">{{ctrl.messages.necessarily}}</div>
+						<div class="form-error" ng-show="formStepFirst.categoryFlat.$error.pattern">{{ctrl.messages.notDegit}}</div>
+					</div>
+				</div>
+
+
+				<div class="wrapper-elements">
+					<p><label class="required" ng-show="ctrl.realty.categoryParcels">Кадастровый номер земельного участка</label></p>
+					<input ui-mask="9999999999:99:999:9999" ui-mask-placeholder ui-mask-placeholder-char="xxxxxxxxxx:xx:xxx:xxxx" ng-pattern="/^[0-9]{10}:[0-9]{2}:[0-9]{3}:[0-9]{4}$/"
+							ng-required="ctrl.realty.categoryParcels" ng-show="ctrl.realty.categoryParcels" name="cadastralNumber" type="text"
+							ng-model="ctrl.realty.cadastralNumber" class="form-control" autocomplete="off">
+					<div class="error-wrap" ng-show="(formStepFirst.$submitted || formStepFirst.cadastralNumber.$touched) && ctrl.realty.categoryParcels">
+						<div class="form-error" ng-show="formStepFirst.cadastralNumber.$error.required">{{ctrl.messages.necessarily}}</div>
+						<div class="form-error" ng-show="formStepFirst.cadastralNumber.$error.pattern">{{ctrl.messages.cadNumber}}</div>
+					</div>
+				</div>
+
+
+				<div class="wrapper-elements">
+					<p><label class="required" ng-show="ctrl.realty.garage">Номер гаража/места</label></p>
+					<input placeholder="Начните писать номер гаража" ng-pattern="ctrl.messages.notDegitPattern" ng-required="ctrl.realty.garage" name="garageNumber" ng-show="ctrl.realty.garage"
+							type="text" ng-model="ctrl.realty.garageNumber" class="form-control" autocomplete="off"
+							ng-class="{errorInput: (formStepFirst.garageNumber.$error.required || formStepFirst.garageNumber.$error.pattern)
+							&& (formStepFirst.$submitted || formStepFirst.garageNumber.$touched)}">
+					<div class="error-wrap" ng-show="(formStepFirst.$submitted || formStepFirst.garageNumber.$touched) && ctrl.realty.garage">
+						<div class="form-error" ng-show="formStepFirst.garageNumber.$error.required">{{ctrl.messages.necessarily}}</div>
+						<div class="form-error" ng-show="formStepFirst.garageNumber.$error.pattern">{{ctrl.messages.notDegit}}</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+			</div>
+
+			<p ng-show="ctrl.categoryFlat" class="attention">Ви можете скрыть номер квартиры на шаге три - публикация объявления</p>
+
+			<div class="separator"></div>
+
+			<div id="map"></div>
+
+			<div class="separator"></div>
+
+			<button ng-disabled="!formStepFirst.$valid || !ctrl.nextClick" class="button-object" type="submit" name="submit">Далее</button>
+
+		</form>
+	</div>
+
+</div>

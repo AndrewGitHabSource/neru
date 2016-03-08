@@ -1,0 +1,64 @@
+@font-face {
+	font-family: PTSansRegular;
+	src: url("/content/fonts/PTSansRegular.eot");
+	src: local('@'),
+	url("/content/fonts/PTSansRegular.ttf") format("truetype"),
+	url('/content/fonts/PTSansRegular.eot?#iefix') format('embedded-opentype'),
+	url('/content/fonts/PTSansRegular.woff') format('woff');
+}
+
+@font-face {
+	font-family: RobotoItalic;
+	src: url("/content/fonts/RobotoItalic.eot");
+	src: local('@'),
+	url("/content/fonts/RobotoItalic.ttf") format("truetype"),
+	url('/content/fonts/RobotoItalic.eot?#iefix') format('embedded-opentype'),
+	url('/content/fonts/RobotoItalic.woff') format('woff');
+}
+
+@font-face {
+	font-family: RobotoLightItalic;
+	src: url("/content/fonts/RobotoLightItalic.eot");
+	src: local('@'),
+	url("/content/fonts/RobotoLightItalic.ttf") format("truetype"),
+	url('/content/fonts/RobotoLightItalic.eot?#iefix') format('embedded-opentype'),
+	url('/content/fonts/RobotoLightItalic.woff') format('woff');
+}
+
+@font-face {
+	font-family: RobotoRegular;
+	src: url("/content/fonts/RobotoRegular.eot");
+	src: local('@'),
+	url("/content/fonts/RobotoRegular.ttf") format("truetype"),
+	url('/content/fonts/RobotoRegular.eot?#iefix') format('embedded-opentype'),
+	url('/content/fonts/RobotoRegular.woff') format('woff');
+}
+
+
+
+@font-face {
+	font-family: RobotoBold;
+	src: url("/content/fonts/RobotoBold.eot");
+	src: local('@'),
+	url("/content/fonts/RobotoBold.ttf") format("truetype"),
+	url('/content/fonts/RobotoBold.eot?#iefix') format('embedded-opentype'),
+	url('/content/fonts/RobotoBold.woff') format('woff');
+}
+
+@font-face {
+	font-family: PTSansBold;
+	src: url("/content/fonts/PTSansBold.eot");
+	src: local('@'),
+	url("/content/fonts/PTSansBold.ttf") format("truetype"),
+	url('/content/fonts/PTSansBold.eot?#iefix') format('embedded-opentype'),
+	url('/content/fonts/PTSansBold.woff') format('woff');
+}
+
+@font-face {
+	font-family: PTSansItalic;
+	src: url("/content/fonts/PTSansItalic.eot");
+	src: local('@'),
+	url("/content/fonts/PTSansItalic.ttf") format("truetype"),
+	url('/content/fonts/PTSansItalic.eot?#iefix') format('embedded-opentype'),
+	url('/content/fonts/PTSansItalic.woff') format('woff');
+}

@@ -1,0 +1,52 @@
+<div class="page-header">
+	<div class="container">
+		<h1>Аутентификация в системе Neru.com</h1>
+	</div>
+</div>
+<div class="breadcrumb">
+	<div class="container">
+		<ul>
+			<li><a ui-sref="home">Главная</a></li>
+			<li>Аутентификация в системе Neru.com</li>
+		</ul>
+	</div>
+</div>
+<div class="container sign-form authorization">
+	<form novalidate name="signupForm" ng-submit="ctrl.authorization(signupForm)">
+
+		<div class="wrap-element">
+			<div class="group">
+				<label for="email">E-mail</label>
+				<input required ng-pattern="ctrl.messages.mailPattern" ng-model="user.email" class="form-input-element" placeholder="Введите E-mail" type="text" id="email" name="email">
+			</div>
+
+			<div class="error-wrap" ng-show="signupForm.$submitted || signupForm.email.$touched">
+				<div class="form-error" ng-show="signupForm.email.$error.required">{{ctrl.messages.necessarily}}</div>
+				<div class="form-error" ng-show="signupForm.email.$error.pattern">{{ctrl.messages.mailFormat}}</div>
+			</div>
+		</div>
+
+		<div class="wrap-element">
+			<div class="group">
+				<label for="password">Пароль</label>
+				<input required ng-model="user.password" class="form-input-element" placeholder="Введите пароль" type="password" id="password" name="password">
+			</div>
+
+			<div class="error-wrap" ng-show="signupForm.$submitted || signupForm.password.$touched">
+				<div class="form-error" ng-show="signupForm.password.$error.required">{{ctrl.messages.necessarily}}</div>
+			</div>
+		</div>
+
+		<div class="group-btn">
+			<button ng-class="{disabledButton: disabled}" ng-disabled="disabled" type="submit" class="btn-send auth">Войти</button>
+			<a href="#">Я забыл пароль</a>
+		</div>
+
+		<div class="errors-response">
+			<ul ng-repeat="errors in ctrl.errors">
+				<li ng-repeat="error in errors">{{error}}</li>
+			</ul>
+		</div>
+
+	</form>
+</div>

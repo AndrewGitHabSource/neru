@@ -1,0 +1,235 @@
+<div class="container">
+	<div class="steps">
+		<div class="step">
+			<div class="circle">1</div>
+			<p>Адрес недвижимости</p>
+		</div>
+		<div class="step active-step">
+			<div class="circle">2</div>
+			<p>Характеристики недвижимости</p>
+		</div>
+		<div class="step">
+			<div class="circle">3</div>
+			<p>Публикация объявления</p>
+		</div>
+	</div>
+
+	<div class="create-object">
+		<form novalidate name="form" ng-submit="ctrl.createObject(form)">
+			<div class="form-group">
+				<h2 class="type-realty">Вид недвижимости: {{ctrl.typeRealty}}</h2>
+
+				<div class="wrap-control">
+					<label class="required" for="square">Общая площадь</label><br/>
+					<input required autocomplete="off" ng-class="{errorInput: (form.square.$error.required || form.square.$error.pattern) && (form.$submitted ||
+							form.square.$touched)}"  ng-pattern="ctrl.messages.float" type="text" class="form-control"
+							name="square" ng-model="ctrl.realty.area" id="square">
+
+					<ui-select ng-disabled="ctrl.realty.list.garage" class="select-units"
+						ng-model="ctrl.realty.areaUnitsSquareSel" theme="bootstrap">
+						<ui-select-match placeholder="">{{ctrl.realty.areaUnitsSquareSel.name}}</ui-select-match>
+						<ui-select-choices repeat="item in ctrl.realty.list.areaUnits">
+							<div ng-bind-html="item.name"></div>
+						</ui-select-choices>
+					</ui-select>
+
+					<div class="error-wrap" ng-show="form.$submitted || form.square.$touched">
+						<div class="form-error" ng-show="form.square.$error.required">{{ctrl.messages.necessarily}}</div>
+						<div class="form-error" ng-show="form.square.$error.pattern">{{ctrl.messages.notDegit}}</div>
+					</div>
+
+					<div class="clear"></div>
+				</div>
+
+				<label ng-show="!ctrl.realty.list.categoryParcels" ng-class="{'required': !ctrl.realty.list.categoryHouse && !ctrl.realty.list.garage}">Материал стен</label>
+				<ui-select ng-show="!ctrl.realty.list.categoryParcels" ng-required="!ctrl.realty.list.categoryParcels && !ctrl.realty.list.garage"
+						ng-model="ctrl.realty.wallMaterialSelected" theme="bootstrap">
+					<ui-select-match placeholder="">{{ctrl.realty.wallMaterialSelected.name}}</ui-select-match>
+					<ui-select-choices repeat="item in ctrl.realty.list.materialWall">
+						<div ng-bind-html="item.name"></div>
+					</ui-select-choices>
+				</ui-select>
+
+				<label ng-if="!ctrl.realty.list.categoryParcels"  for="count-rom"  ng-class="{'required': !ctrl.realty.list.categoryHouse}">Количество комнат</label><br/>
+				<div ng-if="!ctrl.realty.list.categoryParcels"  class="count-room">
+					<div ng-click="ctrl.decrementRoom()" class="btn minus">-</div>
+					<input autocomplete="off" type="text" ng-blur="ctrl.inputBlur($event)" ng-model="ctrl.realty.roomCount" id="count-rom">
+					<div ng-click="ctrl.incrementRoom()" class="btn plus">+</div>
+				</div>
+
+				<label ng-class="{'required': !ctrl.realty.list.categoryHouse}" ng-show="ctrl.realty.list.commercialReal">Полезная площадь (кв. метров)</label>
+				<input ng-pattern="ctrl.messages.float" autocomplete="off" ng-show="ctrl.realty.list.commercialReal" ng-required="ctrl.realty.list.commercialReal" type="text" name="effectiveArea"
+						ng-model="ctrl.realty.effectiveArea" id="effectiveArea" class="form-control">
+				<div class="error-wrap" ng-show="form.$submitted || form.effectiveArea.$touched">
+					<div class="form-error" ng-show="form.effectiveArea.$error.required">{{ctrl.messages.necessarily}}</div>
+					<div class="form-error" ng-show="form.effectiveArea.$error.pattern">{{ctrl.messages.notDegit}}</div>
+				</div>
+
+				<label ng-show="!ctrl.realty.list.categoryParcels && !ctrl.realty.list.commercialReal && !ctrl.realty.list.garage" for="livingSpace">Жилая площадь (кв.м.)</label><br/>
+				<input ng-pattern="ctrl.messages.float" autocomplete="off" ng-show="!ctrl.realty.list.categoryParcels
+						&& !ctrl.realty.list.commercialReal && !ctrl.realty.list.garage"  type="text" name="livingSpace"
+						ng-model="ctrl.realty.livingSpace" id="livingSpace" class="form-control">
+				<div class="error-wrap" ng-show="form.$submitted || form.livingSpace.$touched">
+					<div class="form-error" ng-show="form.livingSpace.$error.required">{{ctrl.messages.necessarily}}</div>
+					<div class="form-error" ng-show="form.livingSpace.$error.pattern">{{ctrl.messages.notDegit}}</div>
+				</div>
+
+				<label ng-show="!ctrl.realty.list.categoryParcels && !ctrl.realty.list.commercialReal && !ctrl.realty.list.garage" for="kitchenArea">Площадь кухни (кв.м.)</label>
+				<input ng-pattern="ctrl.messages.float" autocomplete="off" ng-show="!ctrl.realty.list.categoryParcels
+						&& !ctrl.realty.list.commercialReal && !ctrl.realty.list.garage"  type="text" name="kitchenArea"
+						ng-model="ctrl.realty.kitchenArea" id="kitchenArea" class="form-control">
+				<div class="error-wrap" ng-show="form.$submitted || form.kitchenArea.$touched">
+					<div class="form-error" ng-show="form.kitchenArea.$error.required">{{ctrl.messages.necessarily}}</div>
+					<div class="form-error" ng-show="form.kitchenArea.$error.pattern">{{ctrl.messages.notDegit}}</div>
+				</div>
+
+				<div ng-show="ctrl.realty.list.categoryHouse" class="wrap-control">
+					<label for="homesteadArea">Площадь участка</label></br>
+					<input ng-pattern="ctrl.messages.float" autocomplete="off" type="text" name="homesteadArea"
+							ng-model="ctrl.realty.landArea" id="homesteadArea" class="form-control">
+
+					<ui-select class="select-units" ng-model="ctrl.realty.areaUnitsHomestatedSel" theme="bootstrap">
+						<ui-select-match placeholder="">{{ctrl.realty.areaUnitsHomestatedSel.name}}</ui-select-match>
+						<ui-select-choices repeat="item in ctrl.realty.list.areaUnits">
+							<div ng-bind-html="item.name"></div>
+						</ui-select-choices>
+					</ui-select>
+					<div class="error-wrap" ng-show="form.$submitted || form.homesteadArea.$touched">
+						<div class="form-error" ng-show="form.homesteadArea.$error.required">{{ctrl.messages.necessarily}}</div>
+						<div class="form-error" ng-show="form.homesteadArea.$error.pattern">{{ctrl.messages.notDegit}}</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+				<label ng-show="!ctrl.realty.list.categoryParcels && !ctrl.realty.list.categoryHouse" for="floor" ng-class="{'required':
+							!ctrl.realty.list.categoryParcels && !ctrl.realty.list.categoryHouse}">Этаж</label>
+				<input autocomplete="off" ng-class="{errorInput: (form.floor.$error.required || form.floor.$error.pattern) && (form.$submitted ||
+						form.floor.$touched)}" ng-show="!ctrl.realty.list.categoryParcels && !ctrl.realty.list.categoryHouse"
+						ng-required="!ctrl.realty.list.categoryParcels && !ctrl.realty.list.categoryHouse"
+						type="text" name="floor" ng-model="ctrl.realty.floor" id="floor" class="form-control" ng-pattern="ctrl.messages.notDegitPattern">
+				<div class="error-wrap" ng-show="(form.$submitted || form.floor.$touched) && !ctrl.realty.list.categoryParcels">
+					<div class="form-error" ng-show="form.floor.$error.required">{{ctrl.messages.necessarily}}</div>
+					<div class="form-error" ng-show="form.floor.$error.pattern">{{ctrl.messages.notDegit}}</div>
+				</div>
+
+				<label ng-show="!ctrl.realty.list.categoryParcels"  for="numberStoreys" ng-class="{'required': !ctrl.realty.list.categoryParcels}">Этажность</label>
+				<input autocomplete="off" ng-show="!ctrl.realty.list.categoryParcels" ng-required="!ctrl.realty.list.categoryParcels" type="text"
+						name="numberStoreys" ng-model="ctrl.realty.floorNumber" id="numberStoreys" class="form-control"
+						ng-class="{errorInput: (form.numberStoreys.$error.required || form.numberStoreys.$error.pattern) && (form.$submitted ||
+						form.numberStoreys.$touched)}"  ng-pattern="ctrl.messages.notDegitPattern">
+				<div class="error-wrap" ng-show="(form.$submitted || form.numberStoreys.$touched) && !ctrl.realty.list.categoryParcels">
+					<div class="form-error" ng-show="form.numberStoreys.$error.required">{{ctrl.messages.necessarily}}</div>
+					<div class="form-error" ng-show="form.numberStoreys.$error.pattern">{{ctrl.messages.notDegit}}</div>
+				</div>
+
+				<label ng-show="!ctrl.realty.list.categoryParcels" for="yearBuild">Год постройки</label>
+				<input autocomplete="off" ng-pattern="ctrl.messages.yearPattern" ng-show="!ctrl.realty.list.categoryParcels" type="text"
+						name="yearBuilt" ng-model="ctrl.realty.buildYear" id="yearBuild" class="form-control" ng-class="{errorInput: form.yearBuilt.$error.pattern
+						&& (form.$submitted || form.yearBuilt.$touched)}">
+				<div class="error-wrap" ng-show="form.$submitted || form.yearBuilt.$touched">
+					<div class="form-error" ng-show="form.yearBuilt.$error.pattern">{{ctrl.messages.year}}</div>
+				</div>
+
+				<label ng-show="!ctrl.realty.list.categoryParcels && !ctrl.realty.list.garage">Санузел</label>
+				<ui-select ng-show="!ctrl.realty.list.categoryParcels && !ctrl.realty.list.garage" ng-model="ctrl.realty.wcSelected" theme="bootstrap">
+					<ui-select-match placeholder="">{{ctrl.realty.wcSelected.name}}</ui-select-match>
+					<ui-select-choices repeat="item in ctrl.realty.list.WC">
+						<div ng-bind-html="item.name"></div>
+					</ui-select-choices>
+				</ui-select>
+
+				<label ng-show="!ctrl.realty.list.categoryParcels && !ctrl.realty.list.commercialReal && !ctrl.realty.list.garage">Балкон</label>
+				<ui-select ng-show="!ctrl.realty.list.categoryParcels && !ctrl.realty.list.commercialReal && !ctrl.realty.list.garage"
+					ng-model="ctrl.realty.balconySelected" theme="bootstrap">
+					<ui-select-match placeholder="">{{ctrl.realty.balconySelected.name}}</ui-select-match>
+					<ui-select-choices repeat="item in ctrl.realty.list.balconies">
+						<div ng-bind-html="item.name"></div>
+					</ui-select-choices>
+				</ui-select>
+
+				<label ng-show="!ctrl.realty.list.categoryParcels">Отопление</label>
+				<ui-select ng-show="!ctrl.realty.list.categoryParcels" ng-model="ctrl.realty.heatingSelected" theme="bootstrap">
+					<ui-select-match placeholder="">{{ctrl.realty.heatingSelected.name}}</ui-select-match>
+					<ui-select-choices repeat="item in ctrl.realty.list.heating">
+						<div ng-bind-html="item.name"></div>
+					</ui-select-choices>
+				</ui-select>
+
+				<label ng-show="ctrl.realty.list.garage">Вид транспорта</label>
+				<ui-select ng-show="ctrl.realty.list.garage" ng-model="ctrl.realty.transportTypeSelected" theme="bootstrap">
+					<ui-select-match placeholder="">{{ctrl.realty.transportTypeSelected.name}}</ui-select-match>
+					<ui-select-choices repeat="item in ctrl.realty.list.transportType">
+						<div ng-bind-html="item.name"></div>
+					</ui-select-choices>
+				</ui-select>
+
+				<label ng-show="ctrl.realty.list.garage">Машино-мест</label>
+				<ui-select ng-show="ctrl.realty.list.garage" ng-model="ctrl.realty.parkingPlaceSelected" theme="bootstrap">
+					<ui-select-match placeholder="">{{ctrl.realty.parkingPlaceSelected.name}}</ui-select-match>
+					<ui-select-choices repeat="item in ctrl.realty.list.parkingPlace">
+						<div ng-bind-html="item.name"></div>
+					</ui-select-choices>
+				</ui-select>
+
+				<label ng-show="!ctrl.realty.list.categoryParcels && !ctrl.realty.list.garage">Подогрев воды</label>
+				<ui-select ng-show="!ctrl.realty.list.categoryParcels && !ctrl.realty.list.garage"  ng-model="ctrl.realty.waterHeatingSelected" theme="bootstrap">
+					<ui-select-match placeholder="">{{ctrl.realty.waterHeatingSelected.name}}</ui-select-match>
+					<ui-select-choices repeat="item in ctrl.realty.list.waterHeating">
+						<div ng-bind-html="item.name"></div>
+					</ui-select-choices>
+				</ui-select>
+
+				<label ng-show="ctrl.realty.list.garage">Смотровая яма</label>
+				<ui-select ng-if="ctrl.realty.list.garage" ng-model="ctrl.realty.inspectionPitSelected" theme="bootstrap">
+					<ui-select-match placeholder="">{{ctrl.realty.inspectionPitSelected.name}}</ui-select-match>
+					<ui-select-choices repeat="item in ctrl.realty.list.inspectionPit">
+						<div ng-bind-html="item.name"></div>
+					</ui-select-choices>
+				</ui-select>
+			</div>
+
+			<div ng-show="!ctrl.realty.list.categoryFlat" class="checkbox-objects">
+				<p>Коммуникации</p>
+				<ul>
+					<li ng-class="{selected: item.checked}" class="checkboxes" ng-repeat="item in ctrl.realty.list.communications" ng-click="ctrl.selectObject(item, $event, ctrl.realty.communicationSelected)"><span class="icon-select"></span>{{item.name}}</li>
+				</ul>
+			</div>
+
+			<div ng-show="!ctrl.realty.list.commercialReal" class="checkbox-objects">
+				<p>Расположенные рядом объекты</p>
+				<ul>
+					<li ng-class="{selected: item.checked}" class="checkboxes" ng-repeat="item in ctrl.realty.list.nearObjects" ng-click="ctrl.selectObject(item, $event, ctrl.realty.nearObjectsSelected)"><span class="icon-select"></span>{{item.name}}</li>
+				</ul>
+			</div>
+
+			<div class="separator"></div>
+
+			<div class="upload-image form-group">
+				<p>Планировка / Схема</p>
+				<label>
+					<span class="scheme-image" ng-show="!ctrl.uploaded">Выберите изображение</span>
+					<input id="file" type="file" multiple>
+				</label>
+
+				<div ng-show="ctrl.uploaded" class="load-image">
+					<div class="remove" ng-click="ctrl.deletePhoto()">
+						<span class="ico photoDelete"></span>
+						<span class="ico photoDelete hover"></span>
+					</div>
+					<img ng-src="{{ctrl.uploadImage}}">
+				</div>
+
+				<div ng-show="ctrl.errorPhoto"  class="error-image">
+					<div ng-repeat="item in ctrl.errorPhoto">
+						<span class="form-error" ng-repeat="subItem in item">{{subItem}}</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="wrapper-button">
+				<button ng-click="ctrl.backOnCheck()" class="button-object button-back">Назад</button>
+				<button ng-disabled="!form.$valid || !ctrl.nextClick" class="button-object" type="submit" name="submit">Далее</button>
+			</div>
+		</form>
+	</div>
+</div>

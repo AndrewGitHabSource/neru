@@ -1,0 +1,21 @@
+{
+  "name": "angular-phonecat",
+  "description": "A starter project for AngularJS",
+  "version": "0.0.0",
+  "homepage": "https://github.com/angular/angular-phonecat",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.4.x",
+    "angular-mocks": "1.4.x",
+    "bootstrap": "~3.1.1",
+    "angular-resource": "1.4.x",
+    "angular-ui-router": "0.2.17",
+    "angular-cookies": "1.5.x",
+    "angular-sanitize": "1.5.x",
+    "angular-ui-select": "0.14.x",
+    "angular-bootstrap": "",
+    "angular-ui-uploader": "1.1.x",
+    "angular-ui-mask": "1.7.x"
+  }
+}

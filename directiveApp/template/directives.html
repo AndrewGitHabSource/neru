@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="first-step">
+        <h1 class="elem-style" toggle-class="clicked" toggle-event="click" on-toggle="ctrl.changeStateFunk()">{{ctrl.hello}}</h1>
+
+        <checkbox disabled="{{ctrl.disabledFirst}}" name="nameFirst" readonly="{{ctrl.readonlyFirst}}" ng-model="ctrl.stateModelFirst" change="ctrl.checkboxChange()"></checkbox>
+        <checkbox disabled="{{ctrl.disabledSecond}}" name="nameSecond" readonly="{{ctrl.readonlySecond}}" ng-model="ctrl.stateModelSecond" change="ctrl.checkboxChange()"></checkbox>
+        <checkbox disabled="{{ctrl.disabledThird}}" name="nameThird" readonly="{{ctrl.readonlyThird}}" ng-model="ctrl.stateModelThird" change="ctrl.checkboxChange()"></checkbox>
+        <checkbox disabled="{{ctrl.disabledFour}}" name="nameFour" readonly="{{ctrl.readonlyFour}}" ng-model="ctrl.stateModelFour" change="ctrl.checkboxChange()"></checkbox>
+        <checkbox disabled="{{ctrl.disabledFive}}" name="nameFive" readonly="{{ctrl.readonlyFive}}" ng-model="ctrl.stateModelFive" change="ctrl.checkboxChange()"></checkbox>
+        <checkbox disabled="{{ctrl.disabledSix}}" name="nameSix" readonly="{{ctrl.readonlySix}}" ng-model="ctrl.stateModelSix" change="ctrl.checkboxChange()"></checkbox>
+        <checkbox disabled="{{ctrl.disabledSeven}}" name="nameSeven" readonly="{{ctrl.readonlySeven}}" ng-model="ctrl.stateModelSeven" change="ctrl.checkboxChange()"></checkbox>
+        <checkbox disabled="{{ctrl.disabledEight}}" name="nameEight" readonly="{{ctrl.readonlyEight}}" ng-model="ctrl.stateModelEight" change="ctrl.checkboxChange()"></checkbox>
+
+    </div>
+
+    <div class="multi-directive">
+
+        <multyselect id="first" ng-model="ctrl.selectedItems" index="first" source="ctrl.listItemsFirst" default-text="Любое" class="agencyList" ng-change="ctrl.setSubmitPosition(ctrl.selectedItems)"></multyselect>
+
+        <multyselect id="second" ng-model="ctrl.selectedItems" index="second" source="ctrl.listItemsSecond" default-text="Любое" class="agencyList" ng-change="ctrl.setSubmitPosition(ctrl.selectedItems)"></multyselect>
+
+        <multyselect id="third" ng-model="ctrl.selectedItems" index="third" source="ctrl.listItemsThird" default-text="Любое" class="agencyList" ng-change="ctrl.setSubmitPosition(ctrl.selectedItems)"></multyselect>
+
+        <multyselect id="four" ng-model="ctrl.selectedItems" index="four" source="ctrl.listItemsFour" default-text="Любое" class="agencyList" ng-change="ctrl.setSubmitPosition(ctrl.selectedItems)"></multyselect>
+
+        <multyselect id="five" ng-model="ctrl.selectedItems" index="five" source="ctrl.listItemsFive" default-text="Любое" class="agencyList" ng-change="ctrl.setSubmitPosition(ctrl.selectedItems)"></multyselect>
+
+        <multyselect id="six" ng-model="ctrl.selectedItems" index="six" source="ctrl.listItemsSix" default-text="Любое" class="agencyList" ng-change="ctrl.setSubmitPosition(ctrl.selectedItems)"></multyselect>
+
+        <multyselect id="seven" ng-model="ctrl.selectedItems" index="seven" source="ctrl.listItemsSeven" default-text="Любое" class="agencyList" ng-change="ctrl.setSubmitPosition(ctrl.selectedItems)"></multyselect>
+
+        <multyselect id="eight" ng-model="ctrl.selectedItems" index="eight" source="ctrl.listItemsEight" default-text="Любое" class="agencyList" ng-change="ctrl.setSubmitPosition(ctrl.selectedItems)"></multyselect>
+
+    </div>
+</div>

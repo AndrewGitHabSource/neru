@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="cookie-service" ng-controller="cookieController as ctrl">
+        <div class="cookie-control">
+            <div class="list-cookie">
+                <ul>
+                    <li ng-repeat="(key, item) in ctrl.allCookies"><span>{{key}}: </span>{{item}}</li>
+                </ul>
+            </div>
+            <div class="btn-control">
+                <button ng-click="ctrl.clearAll()">Удалить все</button>
+            </div>
+            <div class="add-cookie">
+                <h2>Добавить cookie</h2>
+
+                <form name="formAddCookie" novalidate method="post" ng-submit="ctrl.saveObject(data, optionsData, formAddCookie)">
+                    <label for="name">Имя поля</label>
+                    <input required="" ng-model="data.name" id="name" type="text" name="name">
+                    <div ng-show="formAddCookie.$submitted || formAddCookie.name.$touched">
+                        <div class="form-error" ng-show="formAddCookie.name.$error.required">Заполните наименование ключа</div>
+                    </div>
+
+                    <label for="value">Значение поля</label>
+                    <input required ng-model="data.value" id="value" type="text" name="value">
+                    <div ng-show="formAddCookie.$submitted || formAddCookie.value.$touched">
+                        <div class="form-error" ng-show="formAddCookie.value.$error.required">Заполните значение поля</div>
+                    </div>
+
+                    <label for="path">Путь</label>
+                    <input ng-model="optionsData.path" id="path" type="text" name="path">
+
+                    <label for="domain">Домен</label>
+                    <input ng-model="optionsData.domain" id="domain" type="text" name="domain">
+
+                    <label for="expires">Период</label>
+                    <input ng-model="optionsData.expires" id="expires" type="text" name="expires">
+
+                    <input type="submit" name="submit">
+                </form>
+            </div>
+
+            <div class="add-collection">
+
+                <h2>Добавить колекцию куки</h2>
+
+                <form name="formAddCookiesCollection" novalidate method="post" ng-submit="ctrl.saveObjectCollection(dataCol, optionsDataCol, formAddCookiesCollection)">
+
+                    <div class="group" ng-repeat="item in ctrl.dataInputObj">
+                        <label for="nameSec">Имя поля</label>
+                        <input required="" ng-model="item.name" id="nameSec" type="text" name="name">
+                        <div ng-show="formAddCookiesCollection.$submitted || formAddCookiesCollection.name.$touched">
+                            <div class="form-error" ng-show="formAddCookiesCollection.name.$error.required">Заполните наименование ключа</div>
+                        </div>
+
+                        <label for="valueSec">Значение поля</label>
+                        <input required ng-model="item.value" id="valueSec" type="text" name="value">
+                        <div ng-show="formAddCookiesCollection.$submitted || formAddCookiesCollection.value.$touched">
+                            <div class="form-error" ng-show="formAddCookiesCollection.name.$error.required">Заполните значение поля</div>
+                        </div>
+
+                    </div>
+
+                    <label for="domenSec">Путь</label>
+                    <input ng-model="optionsDataCol.path" id="domenSec" type="text" name="path">
+
+                    <label for="expiresSec">Период</label>
+                    <input ng-model="optionsDataCol.expires" id="expiresSec" type="text" name="expires">
+
+                    <input type="submit" name="submit">
+
+                </form>
+
+                <button class="add-fields" ng-click="ctrl.addFields()">Добавить поля</button>
+                <button class="del-fields" ng-click="ctrl.deleteFields()">Удалить поля</button>
+
+            </div>
+
+            <div class="delete-cookie">
+
+                <h2>Удалить элемент</h2>
+
+                <form name="formDel" novalidate method="post" ng-submit="ctrl.delete(dataDel, formDel)">
+                    <label for="nameDel">Имя поля</label>
+                    <input required="" ng-model="dataDel.name" id="nameDel" type="text" name="name">
+                    <div ng-show="formDel.$submitted">
+                        <div class="form-error" ng-show="formDel.name.$error.required">Заполните наименование поля</div>
+                    </div>
+
+                    <input type="submit" name="submit">
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

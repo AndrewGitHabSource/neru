@@ -1,0 +1,43 @@
+<div class="codestyle reset-padding">
+	<div class="popup">
+		<h2>Аутентификация в системе <span ng-click="cancel()" class="close-element"></span></h2>
+
+		<div ng-show="(form.email.$error.required || form.password.$error.required) && form.$submitted" class="wrapper-error">
+			<div class="error-popup" ng-show="form.$submitted || form.email.$touched">
+				<div ng-show="form.email.$error.required">{{messages.necessarily}}</div>
+			</div>
+
+			<div class="error-popup" ng-show="form.$submitted || form.password.$touched">
+				<div ng-show="form.password.$error.required">{{messages.necessarily}}</div>
+			</div>
+		</div>
+
+		<form ng-submit="sendData(form)" novalidate class="form" name="form">
+
+			<div class="element-form">
+				<label>E-mail</label>
+				<input ng-model="email" required class="form-input-element" type="text" name="email" id="email" placeholder="Введите e-mail">
+			</div>
+
+			<div class="element-form">
+				<label>Пароль</label>
+				<input ng-model="password" required class="form-input-element" type="text" name="password" placeholder="Введите пароль">
+			</div>
+
+			<button class="button custom button-color-first">Войти</button>
+		</form>
+
+		<div class="popup-info">
+			<p>У вас еще нет аккаунта в системе ВПН?</p>
+			<a href="#">Зарегистрируйтесь как частное лицо</a>
+		</div>
+
+		<div class="popup-info">
+			<p>Вы агент или агентство недвижимости?</p>
+			<a href="#">Ознакомьтесь с правилами и условиями
+				регистрации агентов и агентств недвижимости
+				в системе ВПН</a>
+		</div>
+	</div>
+</div>
+

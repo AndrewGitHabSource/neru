@@ -1,0 +1,214 @@
+ul{
+    list-style: none;
+}
+
+.top-menu{
+    overflow: hidden;
+}
+
+.top-menu li{
+    margin: 0 10px;
+    float: left;
+}
+
+.top-menu a{
+    color: #3c763d;
+    font: 16px Verdana;
+}
+
+.top-menu a:hover{
+    color: magenta;
+}
+
+.checkbox-view{
+    width: 17px;
+    height: 12px;
+    background: url("../images/sp.png") -17px 0 no-repeat;
+    display: inline-block;
+    position: relative;
+    top: 1px;
+    cursor: pointer;
+}
+
+.enabled{
+    background: url("../images/sp.png") 0 0 no-repeat;
+}
+
+.wrapper input{
+    display: none;
+}
+
+.clicked{
+    color: #3c763d;
+    font: 48px Verdana !important;
+}
+
+.elem-style{
+    cursor: pointer;
+    font: 28px Verdana;
+}
+
+.first-step{
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #000;
+}
+
+/* second task */
+
+.button-select{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    line-height: 32px;
+    overflow: hidden;
+    padding: 0 27px 0 10px;
+    margin: 0 11px 0 0;
+    border: 1px solid #dfdfdf;
+    border-radius: 3px;
+    white-space: nowrap;
+    font-family: Verdana;
+    text-overflow: ellipsis;
+    outline: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.wrapper-select{
+    width: 400px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.filter{
+    vertical-align: top;
+    height: 32px;
+    width: 100%;
+    padding: 0 10px;
+    border: 1px solid #dfdfdf;
+    border-radius: 3px;
+    font-size: 15px;
+    outline: none;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.open-select{
+    padding: 10px 10px 0 10px;
+    border: 1px solid #d8d8d8;
+    position: absolute;
+    top: 32px;
+    background: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    display: none;
+    z-index: 1;
+}
+
+.list-item{
+    max-height: 291px;
+    overflow: auto;
+    margin: 10px -10px;
+    border-top: 1px solid #d8d8d8;
+    padding: 10px 0;
+}
+
+.list-item li{
+    position: relative;
+    padding: 4px 10px 4px 12px;
+    font-family: Verdana;
+    cursor: pointer;
+}
+
+.icon-select{
+    width: 17px;
+    height: 12px;
+    background: url("../images/sp.png") -17px 0 no-repeat;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.opened{
+    display: block;
+}
+
+.selected .icon-select{
+    background: url("../images/sp.png") 0 0 no-repeat;
+}
+
+/* end directive multyselect */
+
+.cookie-control{
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #000;
+}
+
+.cookie-control{
+    font-family: Verdana;
+    margin-top: 40px;
+    width: 400px;
+}
+
+.cookie-control label, .cookie-controlinput{
+    display: block;
+}
+
+.cookie-control input[type='submit']{
+    margin-top: 10px;
+}
+
+.cookie-control input{
+    width: 100%;
+    height: 28px;
+    padding: 0 10px 0 10px;
+    border: 1px solid #dfdfdf;
+    border-radius: 3px;
+    white-space: nowrap;
+    font-family: Verdana;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.cookie-control label{
+    margin: 14px 0 4px 0;
+}
+
+.cookie-control input:focus{
+    box-shadow: 0 0 5px rgba(65, 114, 255, 0.4);
+}
+
+.list-cookie li{
+    font: 16px Arial;
+    color: #101010;
+}
+
+.form-error{
+    color: #ac2925;
+}
+
+.add-collection{
+    margin: 20px 0;
+}
+
+.cookie-control .group, .delete-cookie{
+    margin: 20px 0;
+    padding: 20px 0;
+    border-top: 1px solid #000;
+}
+
+.add-fields{
+    margin-top: 20px;
+}
+
+.multi-directive{
+    margin-bottom: 280px;
+}
+
+.agencyList{
+    margin: 100px;
+}
+
+.checkbox-element{
+    margin: 10px 0;
+}

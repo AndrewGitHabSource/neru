@@ -1,0 +1,162 @@
+<div class="container">
+	<div class="steps">
+		<div class="step">
+			<div class="circle">1</div>
+			<p>Адрес недвижимости</p>
+		</div>
+		<div class="step active-step">
+			<div class="circle">2</div>
+			<p>Характеристики недвижимости</p>
+		</div>
+		<div class="step">
+			<div class="circle">3</div>
+			<p>Публикация объявления</p>
+		</div>
+	</div>
+
+	<h2 class="header-check">Пожалуйста, убедитесь, что вы верно указали все параметры объекта недвижимости</h2>
+
+	<table class="table-check" table-set-color>
+		<tr>
+			<td>Категория недвижимости:</td>
+			<td>{{ctrl.checkObject.category.name}}</td>
+		</tr>
+		<tr>
+			<td>Вид недвижимости:</td>
+			<td>{{ctrl.checkObject.categoryType.name}}</td>
+		</tr>
+		<tr>
+			<td>Область:</td>
+			<td>{{ctrl.checkObject.address.region.name}}</td>
+		</tr>
+		<tr>
+			<td>Город:</td>
+			<td>{{ctrl.checkObject.address.city.name}}</td>
+		</tr>
+		<tr>
+			<td>Район:</td>
+			<td>{{ctrl.checkObject.address.district.name}}</td>
+		</tr>
+		<tr>
+			<td>Улица:</td>
+			<td>{{ctrl.checkObject.address.street.name}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.address.cadastralNumber">
+			<td>Кадастровый номер:</td>
+			<td>{{ctrl.checkObject.address.cadastralNumber}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.address.houseNumber">
+			<td>Номер дома:</td>
+			<td>{{ctrl.checkObject.address.houseNumber.number}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.address.garageNumber">
+			<td>Номер гаража:</td>
+			<td>{{ctrl.checkObject.address.garageNumber.number}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.address.flatNumber">
+			<td>Номер квартиры:</td>
+			<td>{{ctrl.checkObject.address.flatNumber.number}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.area">
+			<td>Общая площадь:</td>
+			<td>{{ctrl.checkObject.area}} {{ctrl.checkObject.areaUnit.name}}</td>
+		</tr>
+		<tr ng-show="ctrl.wallMaterial">
+			<td>Материал стен:</td>
+			<td>{{ctrl.wallMaterial.name}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.wallMaterial">
+			<td>Материал стен:</td>
+			<td>{{ctrl.checkObject.wallMaterial.name}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.roomCount">
+			<td>Количество комнат:</td>
+			<td>{{ctrl.checkObject.roomCount}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.landArea">
+			<td>Площадь участка:</td>
+			<td>{{ctrl.checkObject.landArea}} {{ctrl.checkObject.landAreaUnit.name}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.livingSpace">
+			<td>Жилая площадь:</td>
+			<td>{{ctrl.checkObject.livingSpace}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.kitchenArea">
+			<td>Площадь кухни:</td>
+			<td>{{ctrl.checkObject.kitchenArea}} Кв. метры</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.effectiveArea">
+			<td>Полезная площадь:</td>
+			<td>{{ctrl.checkObject.effectiveArea}} Кв. метры</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.floor">
+			<td>Этаж:</td>
+			<td>{{ctrl.checkObject.floor}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.floorNumber">
+			<td>Этажность:</td>
+			<td>{{ctrl.checkObject.floorNumber}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.buildYear">
+			<td>Год постройки:</td>
+			<td>{{ctrl.checkObject.buildYear}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.wc">
+			<td>Санузел:</td>
+			<td>{{ctrl.checkObject.wc.name}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.balcony">
+			<td>Балкон:</td>
+			<td>{{ctrl.checkObject.balcony.name}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.heating">
+			<td>Отопление:</td>
+			<td>{{ctrl.checkObject.heating.name}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.transportType">
+			<td>Вид транспорта:</td>
+			<td>{{ctrl.checkObject.transportType.name}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.parkingPlace">
+			<td>Машино-мест:</td>
+			<td>{{ctrl.checkObject.parkingPlace.name}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.inspectionPit">
+			<td>Смотровая яма:</td>
+			<td>{{ctrl.checkObject.inspectionPit.name}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.waterHeating">
+			<td>Подогрев воды:</td>
+			<td>{{ctrl.checkObject.waterHeating.name}}</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.communication">
+			<td>Коммуникации:</td>
+			<td>
+				<ul>
+					<li ng-repeat="item in ctrl.checkObject.communication">{{item.name}}</li>
+				</ul>
+			</td>
+		</tr>
+		<tr ng-show="ctrl.checkObject.nearObjects">
+			<td>Расположенные рядом объекты:</td>
+			<td>
+				<ul>
+					<li ng-repeat="item in ctrl.checkObject.nearObjects">{{item.name}}</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td>Планировка / Схема:</td>
+			<td ng-show="!ctrl.statePage"><img ng-src="{{ctrl.path}}{{ctrl.checkObject.schema.thumbnails[1].path}}"></td>
+			<td ng-show="ctrl.statePage"><img ng-src="{{ctrl.schema}}"></td>
+		</tr>
+	</table>
+
+	<button ng-show="!ctrl.statePage" ng-click="ctrl.backOnStepFirst()" class="button-object button-back">Назад</button>
+
+	<div class="buttons-route" ng-show="ctrl.statePage">
+		<button ng-click="ctrl.backOnStepFirst()" class="button-object button-back">Назад</button>
+		<button ng-click="ctrl.backOnCreated()" class="button-object button-back">Изменить характеристики</button>
+		<button class="button-object" ng-click="ctrl.createObject()">Создать объект</button>
+	</div>
+</div>

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<base href="/">
+	<title>{{title}}</title>
+	<meta ng-if="robots" name="robots" content="index,follow">
+
+	<link rel="stylesheet" href="content/css/app.css">
+	<link rel="stylesheet" href="content/css/fonts.css">
+	<link rel="stylesheet" href="content/bower_components/angular-ui-select/dist/select.css">
+	<link rel="stylesheet" href="content/bower_components/bootstrap/dist/css/bootstrap.css">
+
+	<link rel="stylesheet" href="directiveApp/css/appDirectiveServices.css">
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+
+
+	<script src="content/bower_components/angular/angular.js"></script>
+	<script src="content/bower_components/angular-sanitize/angular-sanitize.js"></script>
+	<script src="content/bower_components/angular-resource/angular-resource.js"></script>
+	<script src="content/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="content/bower_components/angular-cookies/angular-cookies.js"></script>
+
+	<script src="content/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script src="content/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+	<script src="content/bower_components/angular-ui-select/dist/select.js"></script>
+	<script src="content/bower_components/angular-ui-uploader/dist/uploader.js"></script>
+	<script src="content/bower_components/angular-ui-mask/dist/mask.js"></script>
+
+
+	<script src="https://api-maps.yandex.ru/2.0-stable/?load=package.full&lang=ru-RU" type="text/javascript"></script>
+
+	<script src="js/app.js"></script>
+	<script src="js/router.js"></script>
+	<script src="js/main-controller.js"></script>
+	<script src="js/const.js"></script>
+	<script src="js/restServices.js"></script>
+	<script src="js/declensionService.js"></script>
+	<script src="auth/auth.js"></script>
+	<script src="registration/reg.js"></script>
+	<script src="home/home-controller.js"></script>
+	<script src="home/directive.js"></script>
+	<script src="advertisement/directive/directive_table.js"></script>
+	<script src="advertisement/check-object.js"></script>
+	<script src="advertisement/create-object.js"></script>
+	<script src="advertisement/characteristic.js"></script>
+	<script src="codestyle/codestyle-coontroller.js"></script>
+	<script src="codestyle/auth-controller.js"></script>
+
+
+	<script src="directiveApp/js/controllers.js"></script>
+	<script src="directiveApp/js/directives.js"></script>
+	<script src="directiveApp/js/selectDirectives.js"></script>
+	<script src="directiveApp/js/services.js"></script>
+
+	<script src="directives/multychoices/multychoices.js"></script>
+	<script src="directives/radio_buttons/radio-button.js"></script>
+	<script src="directives/counter/counter.js"></script>
+	<script src="directives/open_content/open-content.js"></script>
+
+
+</head>
+
+<body ng-cloack>
+
+	<div class="view-container" ng-controller="mainController as main">
+		<header class="header">
+
+			<div class="container">
+				<a class="logo" ui-sref="home"><img src="content/images/logo.png" alt=""></a>
+
+				<div class="user-info" ng-show="authorized">
+					<p>{{main.nameUser}}</p>
+
+					<div class="wrap-avatar"><a href="#"><img src="{{main.imageUser}}" alt="{{main.nameUser}}"></a></div>
+				</div>
+				<nav class="top-menu">
+					<ul>
+						<li class="logout"><a ui-sref="codestyle">codestyle</a></li>
+						<li class="logout"><a ui-sref="cookie">cookie</a></li>
+						<li class="logout"><a ui-sref="directive">Директивы</a></li>
+						<li ng-if="authorized && agency"><a ui-sref="compareObject">Добавить объявление</a></li>
+						<li ng-show="!authorized"><a ui-sref="registration">Регистрация</a></li>
+						<li ng-show="!authorized"><a ui-sref="authorization">Авторизация</a></li>
+						<li ng-show="authorized" ng-click="main.logout()" class="logout">Выход</li>
+					</ul>
+				</nav>
+			</div>
+
+		</header>
+	</div>
+
+	<div class="main-container" ui-view></div>
+
+	<footer class="footer" ng-controller="mainController as main">
+		<div class="container">
+			<ul class="footer-link">
+				<li><a ui-sref="home">Поиск объявлений</a></li>
+				<li><a ui-sref="home">Поиск по агентствам</a></li>
+				<li><a ui-sref="home">Помощь по сайту</a></li>
+				<li><a ui-sref="home">Контакты</a></li>
+			</ul>
+
+			<ul class="footer-link second-list">
+				<li><a ui-sref="home">О проекте</a></li>
+				<li><a ui-sref="home">Политика конфиденциальности</a></li>
+				<li><a ui-sref="home">Обратная связь</a></li>
+			</ul>
+
+			<div class="address">
+				<ul>
+					<li>Украина, г. Черкассы, ул. Котовского, 74;</li>
+					<li>Пн. - Пт.: 09:00 - 18:00;</li>
+					<li><span>Телефоны:</span> +380966245257, +380734057268;</li>
+					<li><span>Эл. почта: </span><a class="mail" href="mailto:support@neru.com.ua">support@neru.com.ua</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="social">
+				<p>Мы в соц. сетях</p>
+				<ul>
+					<li class="first-soc"><a href="#"></a></li>
+					<li class="second-soc"><a href="#"></a></li>
+					<li class="third-soc"><a href="#"></a></li>
+					<li class="four-soc"><a href="#"></a></li>
+					<li class="five-soc"><a href="#"></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="copyright">
+			<p class="container">2015 - {{main.year}} Neru.ua © Все права защищены</p>
+		</div>
+	</footer>
+
+
+</body>
+</html>

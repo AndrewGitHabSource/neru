@@ -1,0 +1,45 @@
+<div class="page-header">
+	<div class="container">
+		<h1>Регистрация в системе Neru.com</h1>
+	</div>
+</div>
+<div class="breadcrumb">
+	<div class="container">
+		<ul>
+			<li><a ui-sref="home">Главная</a></li>
+			<li>Регистрация в системе Neru.com</li>
+		</ul>
+	</div>
+</div>
+<div class="container sign-form">
+	<form novalidate name="signupForm" ng-submit="ctrl.registration(signupForm)">
+
+		<div class="wrap-element">
+			<div class="group">
+				<label for="f-name" class="required">Имя</label>
+				<input ng-class="{errorInput: (signupForm.name.$error.required || signupForm.name.$error.pattern) && (signupForm.$submitted || signupForm.name.$touched)}" required ng-model="user.firstName" placeholder="Имя" type="text" id="f-name" name="name">
+			</div>
+
+			<div class="error-wrap" ng-show="signupForm.$submitted || signupForm.name.$touched">
+				<div class="form-error" ng-show="signupForm.name.$error.required">{{ctrl.messages.necessarily}}</div>
+			</div>
+		</div>
+
+		<div class="wrap-element">
+			<div class="group">
+				<label for="email" class="required">E-mail</label>
+				<input ng-class="{errorInput: (signupForm.email.$error.required || signupForm.email.$error.pattern) && (signupForm.$submitted || signupForm.email.$touched)}" required ng-pattern="ctrl.messages.mailPattern" ng-model="user.email" placeholder="E-mail" type="text" id="email" name="email">
+			</div>
+
+			<div class="error-wrap" ng-show="signupForm.$submitted || signupForm.email.$touched">
+				<div class="form-error" ng-show="signupForm.email.$error.required">{{ctrl.messages.necessarily}}</div>
+				<div class="form-error" ng-show="signupForm.email.$error.pattern">{{ctrl.messages.mailFormat}}</div>
+				<div class="form-error" ng-show="!signupForm.email.$error.required && !signupForm.email.$error.pattern" ng-repeat="errors in ctrl.errors"><span
+						ng-repeat="error in errors">{{error}}</span></div>
+			</div>
+		</div>
+
+		<button ng-class="{disabledButton: disabled}" type="submit" ng-disabled="disabled" class="btn-send">Зарегистрироваться</button>
+	</form>
+
+</div>

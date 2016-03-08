@@ -1,0 +1,30 @@
+<div class="container">
+	<h4 class="top-header">Новые объявления о <span ng-click="ctrl.setSale()" ng-class="{active: ctrl.sale}">продаже</span> и <span ng-click="ctrl.setRent()" ng-class="{active: ctrl.rent}">аренде</span> недвижимости {{ctrl.city}}</h4>
+
+	<div class="home-content">
+		<ul class="list-inline list-unstyled advertPreviewList">
+			<li ng-repeat="item in ctrl.articles">
+				<a class="advertPreview" href="#">
+					<p class="category-type">{{item.realty.categoryType.name}}</p>
+
+					<div class="image-wrap">
+						<img ng-if="item.images[0].thumbnails[0].path" ng-src="http://uhome.co{{item.images[0].thumbnails[0].path}}" alt="">
+						<img ng-if="!item.images[0].thumbnails[0].path" src="/content/images/realty_gag.png" alt="">
+
+						<div class="price">
+							{{item.priceFormed}}
+						</div>
+					</div>
+					<div class="area" ng-class="{reset: !item.realty.roomCount}">
+						<span>{{item.realty.roomCount}} <room-count count="{{item.realty.roomCount}}"></room-count></span>
+						<span>{{item.realty.area}} {{item.realty.areaUnit.name}}</span>
+					</div>
+					<div class="address-build"><span>{{item.realty.address.city.name}}; </span>{{item.realty.address.street.name}}</div>
+				</a>
+			</li>
+		</ul>
+
+		<p class="more" ng-show="ctrl.city" ng-click="ctrl.more()">Показать еще</p>
+	</div>
+</div>
+

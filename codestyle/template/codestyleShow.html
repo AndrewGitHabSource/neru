@@ -1,0 +1,540 @@
+<div class="header-page">
+	<div class="container">
+		<h1>Это заголовок CodeStyle</h1>
+	</div>
+</div>
+
+<div class="codestyle reset-padding">
+	<div class="bread-crumbs">
+		<div class="container">
+			<a href="#">Главная</a> / <a href="#">Какая-то родительская страница</a> / CodeStyle
+		</div>
+	</div>
+</div>
+
+<div class="container codestyle">
+	<div class="inputs clearfix">
+		<h1 class="title-elements">Инпуты</h1>
+		<div class="wrapper-input clearfix">
+			<input class="form-input-element" type="text" placeholder="Начните печатать название улицы">
+		</div>
+
+		<div class="wrapper-input clearfix">
+			<input class="form-input-element" type="text" name="">
+		</div>
+
+		<div class="wrapper-input clearfix">
+			<input form-input-element class="form-input-element ng-invalid" type="text" name="">
+
+			<p class="error-text">Вы не заполнили это поле</p>
+		</div>
+	</div>
+
+	<div class="selectors clearfix">
+		<h1 class="title-elements">Селекторы</h1>
+
+		<div class="select-wrapper">
+			<ui-select ng-model="ctrl.selectorsFirstSelected" theme="selectize" ng-disabled="disabled" title="Choose a person">
+				<ui-select-match placeholder="Все виды">{{ctrl.selectorsFirstSelected}}</ui-select-match>
+				<ui-select-choices repeat="item in ctrl.selectorsFirst | filter: $select.search">
+					<div ng-bind-html="item"></div>
+				</ui-select-choices>
+			</ui-select>
+		</div>
+
+		<div class="select-wrapper">
+			<ui-select class="first-type" required ng-model="ctrl.selectorsSecondSelected" name="selectedCategory" ng-change="" theme="selectize">
+				<ui-select-match placeholder="Все виды">{{ctrl.selectorsSecondSelected.number}}</ui-select-match>
+				<ui-select-choices group-by="'name'" repeat="item in ctrl.selectionsSecond | filter: $select.search">
+					<div ng-bind-html="item.number"></div>
+				</ui-select-choices>
+			</ui-select>
+		</div>
+
+		<div class="select-wrapper">
+			<input placeholder="Начните печатать"
+				name="typeheadName" type="text" typeahead-template-url="content/template/typeahead-match.html"
+				typeahead-popup-template-url="content/template/typeahead-popup.html" ng-model="ctrl.selTypeSel"
+				uib-typeahead="state as state.name for state in ctrl.selType | filter:{name:$viewValue}"
+				class="form-control type-head" autocomplete="off">
+		</div>
+	</div>
+
+	<div class="multyselect">
+		<multychoices select="ctrl.locationSelected" data="ctrl.location"></multychoices>
+	</div>
+
+	<div class="pagination">
+		<h1 class="title-elements">Пейджинг</h1>
+		<uib-pagination template-url="content/template/pagination.html" total-items="ctrl.bigTotalItems" ng-model="ctrl.bigCurrentPage" max-size="ctrl.maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false"></uib-pagination>
+	</div>
+
+	<div class="checkboxes">
+		<h1 class="title-elements">Чекбоксы</h1>
+		<checkbox disabled="false" text="Школы, лицеи, гимназии" name="nameFirst" readonly="false" ng-model="ctrl.checkboxFirst"></checkbox>
+		<checkbox disabled="false" text="Школы, лицеи, гимназии" name="nameSecond" readonly="false" ng-model="ctrl.checkboxSecond"></checkbox>
+	</div>
+
+	<div class="radio-buttons">
+		<h1 class="title-elements">Radiobuttons</h1>
+		<radio-button select-radio-button="ctrl.radioSelect" data="ctrl.radio"></radio-button>
+	</div>
+
+	<div class="counter">
+		<h1 class="title-elements">Счетчик значений</h1>
+		<counter count="ctrl.count" min="1" max="200"></counter>
+	</div>
+
+	<div class="wrapper-textarea">
+		<h1 class="title-elements">Textarea</h1>
+		<textarea class="textarea" name=""></textarea>
+	</div>
+
+	<div class="form">
+		<h1 class="title-elements">Пример формы</h1>
+
+		<div class="element-form">
+			<label class="required">Вид недвижимости</label>
+
+			<div class="select-wrapper">
+				<ui-select class="first-type" required ng-model="ctrl.selectorsFirstSelected" name="selectedCategory" ng-change="" theme="selectize">
+					<ui-select-match placeholder="">{{ctrl.selectorsFirstSelected}}</ui-select-match>
+					<ui-select-choices repeat="item in ctrl.selectorsFirst | filter: $select.search">
+						<div ng-bind-html="item"></div>
+					</ui-select-choices>
+				</ui-select>
+			</div>
+		</div>
+
+		<div class="splitter"></div>
+
+		<p>Адрес</p>
+
+		<div class="element-form">
+			<label class="required">Область</label>
+
+			<div class="select-wrapper">
+				<ui-select class="first-type" required ng-model="ctrl.selectorsFourSelected" name="selectedCategory" ng-change="" theme="selectize">
+					<ui-select-match placeholder="">{{ctrl.selectorsFourSelected}}</ui-select-match>
+					<ui-select-choices repeat="item in ctrl.selectorsFour | filter: $select.search">
+						<div ng-bind-html="item"></div>
+					</ui-select-choices>
+				</ui-select>
+			</div>
+		</div>
+
+		<div class="element-form">
+			<label class="required">Город</label>
+
+			<div class="select-wrapper">
+				<ui-select class="first-type" required ng-model="ctrl.selectorsFiveSelected" name="selectedCategory" ng-change="" theme="selectize">
+					<ui-select-match placeholder="">{{ctrl.selectorsFiveSelected}}</ui-select-match>
+					<ui-select-choices repeat="item in ctrl.selectorsFive | filter: $select.search">
+						<div ng-bind-html="item"></div>
+					</ui-select-choices>
+				</ui-select>
+			</div>
+		</div>
+
+		<div class="element-form units-element clearfix">
+			<div class="left-elem">
+				<label class="required">Цена</label>
+
+				<div class="wrapper-input clearfix">
+					<input class="form-input-element" type="text" name="">
+				</div>
+			</div>
+
+			<div class="select-wrapper">
+				<ui-select class="first-type" required ng-model="ctrl.unitsCostSelect" name="selectedCategory"
+					ng-change="" theme="selectize">
+					<ui-select-match placeholder="">{{ctrl.unitsCostSelect.name}}</ui-select-match>
+					<ui-select-choices repeat="item in ctrl.unitsCost | filter: $select.search">
+						<div ng-bind-html="item.name"></div>
+					</ui-select-choices>
+				</ui-select>
+			</div>
+		</div>
+
+		<div class="checkboxes-form">
+			<checkbox disabled="false" text="Меблированная кухня" name="name1" readonly="false"
+				ng-model="ctrl.checkboxFormFirst"></checkbox>
+			<checkbox disabled="false" text="Кровать" name="name2" readonly="false"
+				ng-model="ctrl.checkboxFormSecond"></checkbox>
+			<checkbox disabled="false" text="Кухонный уголок" name="name3" readonly="false"
+				ng-model="ctrl.checkboxFormThird"></checkbox>
+			<checkbox disabled="false" text="Шкаф" name="name4" readonly="false"
+				ng-model="ctrl.checkboxFormFour"></checkbox>
+		</div>
+
+		<div class="element-form">
+			<label>Описание</label>
+			<textarea class="textarea"></textarea>
+		</div>
+	</div>
+
+
+	<h1 class="title-elements">	Шаги формы</h1>
+	<div class="step-wrapper">
+		<div class="step-form">
+			<p class="circle">1</p>
+
+			<p class="step-text">Адрес недвижимости</p>
+		</div>
+
+		<div class="step-form">
+			<p class="circle">2</p>
+
+			<p class="step-text">Характеристики недвижимости</p>
+		</div>
+
+		<div class="step-form active">
+			<p class="circle">3</p>
+
+			<p class="step-text">Новое объявление</p>
+		</div>
+	</div>
+
+	<div class="buttons">
+		<h1 class="title-elements">Кнопки</h1>
+		<button class="button button-add custom">Добавить обьявление</button>
+		<button class="button custom">Создать объявление</button>
+
+		<button class="button back-btn custom">Назад</button>
+		<button class="button forward-btn custom">Вперед</button>
+		<button class="button custom button-color-first">Поиск</button>
+	</div>
+
+</div>
+
+<div class="container codestyle">
+	<h1 class="title-elements">Сайдменю</h1>
+	<ul class="side-menu">
+		<li class="top-head">Частным лицам</li>
+		<li><a href="">Как разместить объявление?</a></li>
+		<li><a href="">Какие у меня гарантии безопасности?</a></li>
+		<li><a href="">А что, если я фея?</a></li>
+		<li><a href="">Как разместить объявление?</a></li>
+		<li><a href="">Какие у меня гарантии безопасности?</a></li>
+	</ul>
+
+	<div class="popup-wrapper">
+		<h1 class="title-elements">Pop up</h1>
+		<button ng-click="ctrl.openPopup()" class="button custom">Аутидентификация</button>
+	</div>
+
+	<div class="gallery clearfix">
+		<h1 class="title-elements">Фото (загрузка при создании объявления)</h1>
+		<div ng-repeat="(key, item) in ctrl.gallery" class="item-gallery">
+			<div ng-click="ctrl.deletePhoto(key)" class="delete-photo"><span class="close-element"></span></div>
+			<img ng-src="{{item.img}}">
+			<p ng-if="item.main" class="bottom-link">Основное фото</p>
+			<p ng-if="!item.main" ng-click="ctrl.makeMain(item)" class="bottom-link">Сделать основным</p>
+		</div>
+	</div>
+
+	<div class="wrapper-realty clearfix">
+		<h1 class="title-elements">Блок обьявлений</h1>
+		<div class="realty">
+			<a class="link-realty" href="#"></a>
+			<p class="title">Квартира</p>
+			<div class="photo">
+				<p class="cost">250 USD / день (5000 UAH / день)</p>
+				<img src="/content/images/realty.png">
+			</div>
+			<div class="area-info">
+				<span>5 комнат</span>
+				<span>444 кв. метра</span>
+			</div>
+			<div class="address">
+				<span>Черкассы, ул. Героев Сталинграда</span>
+			</div>
+		</div>
+		<div class="realty">
+			<a class="link-realty" href="#"></a>
+			<p class="title">Квартира</p>
+			<div class="photo">
+				<p class="cost">250 USD / день (5000 UAH / день)</p>
+				<img src="/content/images/realty.png">
+			</div>
+			<div class="area-info">
+				<span>5 комнат</span>
+				<span>222 кв. метра</span>
+			</div>
+			<div class="address">
+				<span>Черкассы, ул. Героев Сталинграда</span>
+			</div>
+		</div>
+		<div class="realty">
+			<a class="link-realty" href="#"></a>
+			<p class="title">Квартира</p>
+			<div class="photo">
+				<p class="cost">250 USD / день (5000 UAH / день)</p>
+				<img src="/content/images/realty.png">
+			</div>
+			<div class="area-info">
+				<span>5 комнат</span>
+				<span>888 кв. метра</span>
+			</div>
+			<div class="address">
+				<span>Черкассы, ул. Героев Сталинграда</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="statuses">
+		<h1 class="title-elements">Статусы объявлений</h1>
+		<p class="status">На премодерации</p>
+		<p class="status public">Опубликовано</p>
+		<p class="status disallow">Отклонено администрацией ВПН</p>
+		<p class="status pull-off">Заявка на снятие с публикации</p>
+		<p class="status private">Снято с публикации</p>
+	</div>
+
+	<ul class="sidebar">
+		<h1 class="title-elements">Боковое меню</h1>
+		<li class="active"><a href="#">Мой профиль</a></li>
+		<li><a href="#">Изменение пароля</a></li>
+		<li><a href="#">Мои объявления</a></li>
+		<li><a href="#">Группы объявлений</a></li>
+		<li><a href="#">Мои агенты</a></li>
+	</ul>
+
+</div>
+
+<div class="codestyle">
+	<div class="list-advert">
+		<div class="container">
+			<h1 class="title-elements">Объявления списком</h1>
+			<div class="advert">
+				<div class="top-info clearfix">
+					<h4><a href="#">Продается квартира в центре города!</a></h4>
+					<p class="status">На премодерации</p>
+				</div>
+				<div class="advert-info">
+					<img src="/content/images/advert_image.png">
+					<ul class="details">
+						<li><span>Категория и вид:</span> Квартиры и комнаты. Квартира</li>
+						<li><span>Адрес:</span> Черкасская обл., г. Черкассы,ул. Седова, д. 40, кв. 112</li>
+						<li><span>Тип:</span> Продажа</li>
+						<li><span>Автор:</span> Евгений Курт</li>
+					</ul>
+				</div>
+				<div class="bottom-block">
+					<a href="#">Редактировать</a>
+					<a href="#">Совсем редактировать</a>
+				</div>
+			</div>
+
+			<div class="advert">
+				<div class="top-info clearfix">
+					<h4><a href="#">Продается квартира в центре города! Продам готовый бизнес (агентство эскорт- и интим-услуг)</a></h4>
+					<p class="status disallow">Отклонено администрацией ВПН</p>
+				</div>
+				<div class="advert-info">
+					<img src="/content/images/advert_image.png">
+					<ul class="details">
+						<li><span>Категория и вид:</span> Квартиры и комнаты. Квартира</li>
+						<li><span>Адрес:</span> Черкасская обл., г. Черкассы,ул. Седова, д. 40, кв. 112</li>
+						<li><span>Тип:</span> Продажа</li>
+						<li><span>Автор:</span> Евгений Курт</li>
+					</ul>
+				</div>
+				<div class="bottom-block">
+					<a href="#">Редактировать</a>
+					<a href="#">Совсем редактировать</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="codestyle container">
+	<h1 class="title-elements">Текст</h1>
+	<div class="text-wrapper">
+		<h1>
+			Очень и очень длинный заголовок у типовой страницы, чтобы настроить междустрочный интервал.
+			Данный заголовок нужен для того, чтобы настроить междустрочный интервал (H1)
+		</h1>
+
+		<p>
+			Эта страница создана для демонстрации блоков и элементов, которые используются на сайте, и служит руководством
+			для всех, кто работает над ним. Дизайнеры и технологи отрабатывают здесь стили, чтобы добиться
+			приемлемых результатов в различных сочетаниях блоков и элементов. Контент-менеджеры и редакторы
+			используют страницу в качестве справочника по верстке типовых страниц. Здесь же рассказывается о некоторых общих
+			правилах оформления контента.
+		</p>
+
+		<p>
+			На сайте может встречаться несколько видов ссылок. Например, ссылка на  <a href="#" class="outer-link">Яндекс</a> является внешней.<br>
+			<a href="#">Внутренние ссылки</a> могут открываться по умолчанию в текущем окне. Наиболее простыми способами выделения
+			информации являются <strong>жирное</strong> и <i>курсивное</i> начертания.
+		</p>
+
+		<h2>А это стиль заголовка второго уровня. Несколько<br> двухстрочных заголовков (H2)</h2>
+
+		<h3>Далее следует заголовок третьего уровня. Для проверки<br> их сочетания (H3)</h3>
+
+		<h4>А именно: отступов и интерлиньяжа</h4>
+
+		<h5>
+			Заголовок &lt;h5&gt; используется только для вспомогательной информации, где есть вероятность появления шестого уровня разбивки.<br>
+			Пример — блок «Контактная информация», который внутри дробится по отделам компании.
+		</h5>
+
+		<h6>
+			Самый «нижний» заголовок  &lt;h6&gt; предваряет такие элементы,<br>
+			как «Комментарий» или «Таблица».
+		</h6>
+	</div>
+
+	<div class="lists">
+		<h1 class="title-elements">Списки</h1>
+		<p>Для уменьшения расстояния между параграфом и связанным с ним списком, параграфу нужно добавлять класс «Перед списком» (before_list).</p>
+
+		<p class="before_list">Нумерованный список:</p>
+		<ol>
+			<li>Первый пункт списка</li>
+			<li>Второй пункт списка</li>
+			<li>Третий пункт списка</li>
+		</ol>
+
+		<p class="before_list">Маркированный:</p>
+		<ul>
+			<li>Первый пункт списка</li>
+			<li>Второй пункт списка</li>
+			<li>Третий пункт списка</li>
+		</ul>
+	</div>
+
+	<div class="comments">
+		<h1 class="title-elements">Комментарий</h1>
+		<p class="comment">
+			Элемент «Комментарий» (класс comment) применяется к пояснительному тексту. И еще немного специально написанного текста,<br>
+			чтобы получилось несколько строк для наглядности.
+		</p>
+	</div>
+
+	<h1 class="title-elements">Важная информация</h1>
+	<div class="important">
+		Элемент «Важно». (класс important), который используется для выделения особо важной информации. И еще немного специально
+		написанного текста,чтобы получилось несколько строк для наглядности.
+	</div>
+
+	<div class="questions">
+		<h1 class="title-elements">Раскрывающийся контент</h1>
+		<div open-content dialog-title="Вопрос номер один" dialog-content="Ответ на вопрос номер один"></div>
+		<div open-content dialog-title="Вопрос номер один" dialog-content="Ответ на вопрос номер один"></div>
+		<div open-content dialog-title="Вопрос номер один" dialog-content="Ответ на вопрос номер один"></div>
+	</div>
+
+	<div class="wrapper-contacts">
+		<h1 class="title-elements">Контактная информация</h1>
+		<div class="contacts">
+			<p>Главный офис</p>
+
+			<ul class="contact-info">
+				<li><span>Адрес:</span> Черкасская область, г. Черкассы, ул. Валерия Лобановского, 74 (оф. 12)</li>
+				<li><span>Телефоны:</span> (096)712-31-21, (093)221-09-20, (097)399-86-09</li>
+			</ul>
+
+			<div id="map1"></div>
+		</div>
+
+		<div class="contacts">
+			<p>Офис на Смелянской</p>
+
+			<ul class="contact-info">
+				<li><span>Адрес:</span> Черкасская область, г. Черкассы, ул. Валерия Лобановского, 74 (оф. 12)</li>
+				<li><span>Телефоны:</span> (096)712-31-21, (093)221-09-20, (097)399-86-09</li>
+			</ul>
+
+			<div id="map2"></div>
+		</div>
+	</div>
+
+	<div class="block-images clearfix">
+		<h1 class="title-elements">Картинки в тексте</h1>
+		<img class="align-left" src="/content/images/image.png">
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin
+			dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis
+			penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus ph
+			vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet,
+			consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus acc
+			et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis
+			parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus
+			mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			Aenean euismod bibendum laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+			euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
+			Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes.
+		</p>
+
+		<div>
+			<img class="align-right" src="/content/images/image.png">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin
+				dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis
+				penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus ph
+				vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet,
+				consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus acc
+				et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis
+				parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus
+				mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				Aenean euismod bibendum laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+				euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
+				Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes.
+			</p>
+		</div>
+	</div>
+
+	<div class="tables">
+		<h1 class="title-elements">Таблицы</h1>
+		<table class="vertical-table">
+			<tr>
+				<td>Категория недвижимости:</td>
+				<td>Квартиры и комнаты</td>
+			</tr>
+			<tr>
+				<td>Вид недвижимости:</td>
+				<td>Квартира</td>
+			</tr>
+			<tr>
+				<td>Область:</td>
+				<td>Черкасская</td>
+			</tr>
+			<tr>
+				<td>Город:</td>
+				<td>Черкассы</td>
+			</tr>
+			<tr>
+				<td>Район:</td>
+				<td>Черкасский</td>
+			</tr>
+			<tr>
+				<td>Улица:</td>
+				<td>Смелянская</td>
+			</tr>
+		</table>
+
+		<table class="horizontal-table">
+			<tr>
+				<td>Заголовок 1</td>
+				<td>Заголовок 2</td>
+				<td>Заголовок 3</td>
+			</tr>
+
+			<tr>
+				<td>Контент 1.1</td>
+				<td>Контент 2.1</td>
+				<td>Контент 3.1</td>
+			</tr>
+
+			<tr>
+				<td>Контент 1.2</td>
+				<td>Контент 2.2</td>
+				<td>Контент 3.2</td>
+			</tr>
+		</table>
+	</div>
+</div>
